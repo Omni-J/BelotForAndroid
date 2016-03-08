@@ -2,7 +2,9 @@
     <string name="app_name">BeloteProject</string>
     <string name="Username_hint">Username</string>
     <string name="long_white_space">             </string>
-    <string name="long_white_spaces">            </string> /string>
+    <string name="long_white_spaces">            </string>
+    <string name="title_activity_account_anctivity">AccountAnctivityActivity</string>
+    <string name="action_settings">Settings</string> /string>
 
 
 </resources>
