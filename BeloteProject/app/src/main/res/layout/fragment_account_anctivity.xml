@@ -22,10 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="logOut "
-        android:id="@+id/bt_lgout"
+        android:id="@+id/bt_logout"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="logOut"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/bt_search"
+        android:layout_toLeftOf="@+id/bt_play"
+        android:layout_toStartOf="@+id/bt_play"
+        android:onClick="SearchBotton"/>
+
 
 </RelativeLayout>

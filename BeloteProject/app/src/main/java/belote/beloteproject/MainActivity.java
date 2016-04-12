@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void logIn(View view) {
-        Intent intent = new Intent(this, AccountAnctivityActivity.class);
+        Intent intent = new Intent(this, CreateRoomActivity.class);
         startActivity(intent);
     }
 }
