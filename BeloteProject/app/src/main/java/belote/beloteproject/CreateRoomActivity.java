@@ -46,14 +46,12 @@ public class CreateRoomActivity extends AppCompatActivity {
 
     private WifiP2pManager.PeerListListener peerListListener = new WifiP2pManager.PeerListListener() {
         @Override
-        public void onPeersAvailable(WifiP2pDeviceList peers) {
-            String[] lines = peers.toString().split(System.getProperty("line.separator"));
-            allList.add("SADASSAD");
-
+        public void onPeersAvailable(WifiP2pDeviceList peerList) {
+            String[] lines = peerList.toString().split(System.getProperty("line.separator"));
             for (String line : lines) {
                 if (line.contains("deviceAddress: ")){
                     String address = line.split("deviceAddress: ")[1];
-                    String name = peers .get(address).deviceName;
+                    String name = peerList.get(address).deviceName;
                     if(!allList.contains(name) && !choiceList.contains(name)){
                         allList.add(name);
                         devices.put(name, address);
@@ -63,8 +61,6 @@ public class CreateRoomActivity extends AppCompatActivity {
             }
         }
     };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,7 +142,7 @@ public class CreateRoomActivity extends AppCompatActivity {
     }
     public void StartGame(View v) {
         if (!(choiceList.size() < numberOfPlayers)) {
-//                Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_LONG).show();
+//               Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_LONG).show();
             final ProgressDialog connectingDialog = new ProgressDialog(this);
             connectingDialog.setCancelable(false);
             String message = getResources().getString(R.string.connecting_to_other);
@@ -199,6 +195,8 @@ public class CreateRoomActivity extends AppCompatActivity {
     public int getConnectedPeers(){
         return connectedPeers;
     }
-
+    public WifiP2pManager.PeerListListener getPeersListListener(){
+        return peerListListener;
+    }
 
 }
