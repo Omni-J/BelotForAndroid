@@ -33,6 +33,8 @@ public class CreateRoomActivity extends AppCompatActivity {
     ListView All, Choice;
     IntentFilter mIntentFilter;
     Handler progressHandler;
+    private final IntentFilter intentFilter = new IntentFilter();
+
 
     ArrayList<String> choiceList = new ArrayList<String>();
     ArrayList<String> allList = new ArrayList<String>();
@@ -42,10 +44,12 @@ public class CreateRoomActivity extends AppCompatActivity {
     private final int numberOfPlayers = 1;
 
 
-
     private WifiP2pManager.PeerListListener peerListListener = new WifiP2pManager.PeerListListener() {
+        @Override
         public void onPeersAvailable(WifiP2pDeviceList peers) {
             String[] lines = peers.toString().split(System.getProperty("line.separator"));
+            allList.add("SADASSAD");
+
             for (String line : lines) {
                 if (line.contains("deviceAddress: ")){
                     String address = line.split("deviceAddress: ")[1];
@@ -66,7 +70,10 @@ public class CreateRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_anctivity);
-
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
+        intentFilter.addAction(WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION);
         //To register the BroadastReceiver
         mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         mChannel =  (Channel) mManager.initialize(this, getMainLooper(), null); //It was necessary to make a cast (Channel)
@@ -82,6 +89,8 @@ public class CreateRoomActivity extends AppCompatActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
+        allListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, allList);
+        choiceLisAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, choiceList);
 
         All = (ListView) findViewById(R.id.all);
         All.setAdapter(allListAdapter);

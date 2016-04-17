@@ -6,8 +6,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="belote.beloteproject.AccountAnctivityActivityFragment"
-    android:background="@drawable/belot_logo">
+    tools:context="belote.beloteproject.AccountAnctivityActivityFragment">
+    //android:background="@drawable/belot_logo">
 
 
     <Button
@@ -42,7 +42,8 @@
         android:layout_width="261dp"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/bt_play"
-        android:layout_toStartOf="@+id/bt_play">
+        android:layout_toStartOf="@+id/bt_play"
+        android:layout_below="@+id/bt_search">
     </ListView>
 
     <ListView
@@ -50,7 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/bt_play"
-        android:layout_toEndOf="@+id/bt_play">
+        android:layout_toEndOf="@+id/bt_play"
+        android:layout_below="@+id/bt_logout">
     </ListView>
 
 
