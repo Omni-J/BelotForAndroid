@@ -16,7 +16,8 @@
         android:text="Play"
         android:id="@+id/bt_play"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="StartGame"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -36,6 +37,21 @@
         android:layout_toLeftOf="@+id/bt_play"
         android:layout_toStartOf="@+id/bt_play"
         android:onClick="SearchBotton"/>
+    <ListView
+        android:id="@+id/myList"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/bt_play"
+        android:layout_toStartOf="@+id/bt_play">
+    </ListView>
+
+    <ListView
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bt_play"
+        android:layout_toEndOf="@+id/bt_play">
+    </ListView>
 
 
 </RelativeLayout>

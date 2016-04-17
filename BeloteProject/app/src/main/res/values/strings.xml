@@ -4,7 +4,9 @@
     <string name="long_white_space">             </string>
     <string name="long_white_spaces">            </string>
     <string name="title_activity_account_anctivity">AccountAnctivityActivity</string>
-    <string name="action_settings">Settings</string> /string>
+    <string name="action_settings">Settings</string>
+    <string name="connecting_to_other">Connecting to other players...</string>
+    /string>
 
 
 </resources>
