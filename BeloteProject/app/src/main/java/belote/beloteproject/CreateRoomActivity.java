@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
@@ -141,29 +143,28 @@ public class CreateRoomActivity extends AppCompatActivity {
         });
     }
     public void StartGame(View v) {
-        if (!(choiceList.size() < numberOfPlayers)) {
-//               Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_LONG).show();
-            final ProgressDialog connectingDialog = new ProgressDialog(this);
-            connectingDialog.setCancelable(false);
-            String message = getResources().getString(R.string.connecting_to_other);
-            connectingDialog.setMessage(message);
-            connectingDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            connectingDialog.setProgress(0);
-            connectingDialog.setMax(numberOfPlayers + 1);
-            connectingDialog.show();
-            mManager.createGroup(mChannel, new WifiP2pManager.ActionListener() {
+        String ip;
+
+        for(String name: choiceList){
+            ip = devices.get(name);
+            WifiP2pConfig config = new WifiP2pConfig();
+            config.deviceAddress = ip;
+            mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+
                 @Override
                 public void onSuccess() {
-                    // TODO Auto-generated method stub
-                    progressHandler.sendMessage(progressHandler.obtainMessage());
+                    Toast.makeText(getApplicationContext(), "connected to", Toast.LENGTH_SHORT).show();
+                    connectedPeers++;
                 }
 
                 @Override
                 public void onFailure(int reason) {
-                    // TODO Auto-generated method stub
+                    //failure logic
                 }
             });
+
         }
+
     }
 
     @Override
